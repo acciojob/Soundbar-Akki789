@@ -1,19 +1,16 @@
-//your JS code here. If required.
-// Use the required sound names (files are expected in ./sounds/)
 const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
-
 const buttons = document.getElementById('buttons');
 
 // Build a play button for each sound
 sounds.forEach((sound) => {
-  // hidden audio element
+  // Create hidden audio element
   const audio = document.createElement('audio');
   audio.id = sound;
-  audio.src = ./sounds/${sound}.mp3;
+  audio.src = `./sounds/${sound}.mp3`; // template literal fixed
   audio.preload = 'auto';
   document.body.appendChild(audio);
 
-  // visible button
+  // Create visible button
   const btn = document.createElement('button');
   btn.className = 'btn';
   btn.textContent = sound;
@@ -22,7 +19,7 @@ sounds.forEach((sound) => {
     stopSounds();
     const el = document.getElementById(sound);
     el.currentTime = 0;
-    const p = el.play();    
+    el.play();
   });
 
   buttons.appendChild(btn);
@@ -35,12 +32,12 @@ stopBtn.textContent = 'stop';
 stopBtn.addEventListener('click', stopSounds);
 buttons.appendChild(stopBtn);
 
-// Pause & reset all
+// Pause & reset all sounds
 function stopSounds() {
   sounds.forEach((sound) => {
     const el = document.getElementById(sound);
     if (!el) return;
     el.pause();
-    el.currentTime = 0;
-  });
+    el.currentTime = 0;
+  });
 }
